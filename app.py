@@ -1,10 +1,11 @@
 import json
 import os
 import subprocess
+import config
 from bottle import route, run, Bottle, request, static_file, error, response
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://temple:ldstempleapi@ds161410.mlab.com:61410/lds-temples-api')
+client = MongoClient('mongodb://' + config.db_user + ':' + config.db_password + 'ldstempleapi@ds161410.mlab.com:61410/lds-temples-api')
 db = client['lds-temples-api']
 col_temples = db['temples']
 col_sessions = db['sessions']
